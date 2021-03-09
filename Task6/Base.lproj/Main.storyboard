@@ -32,9 +32,6 @@
                                     <constraint firstAttribute="width" constant="280" id="6eC-TE-Hl9"/>
                                     <constraint firstAttribute="height" constant="29" id="E9m-su-khz"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="sliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="Uik-ak-8AC"/>
-                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlS-du-bCE">
                                 <rect key="frame" x="312" y="207" width="29" height="21"/>
@@ -85,6 +82,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="FTz-On-dgC" id="sa6-fl-6wZ"/>
+                        <outlet property="slider" destination="YEF-Hw-PhE" id="VuR-BI-AnN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
