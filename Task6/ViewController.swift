@@ -8,10 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var num: Int = 0
-    var sliderValue: Int = 0
-    private var alertController: UIAlertController!
-    
+    var ans: Int = 0
+    @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var label: UILabel!
     
     override func viewDidLoad() {
@@ -19,46 +17,35 @@ class ViewController: UIViewController {
         random()
     }
     
-    @IBAction func sliderValue(_ sender: UISlider) {
-        sliderValue = Int(sender.value)
-    }
-    
     func random() {
-        num = Int(arc4random_uniform(100) + 1)
-        label.text = String(num)
+        ans = Int(arc4random_uniform(100) + 1)
+        label.text = String(ans)
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        if num != sliderValue {
-            let alert1 =
-                UIAlertController(title: "結果",
-                                  message: """
-              はずれ！
-              あなたの値: \(sliderValue)
-            """,preferredStyle: .alert)
-            let defaultAction1: UIAlertAction = UIAlertAction(title: "再挑戦", style: .default, handler:{
-                // ボタンが押された時の処理を書く（クロージャ実装）
-                (action: UIAlertAction!) -> Void in
-                self.random()
-            })
-            alert1.addAction(defaultAction1)
-            present(alert1, animated: true, completion: nil)
+        let sliderValue = Int(slider.value)
+        let firstLine: String
+        
+        if ans == sliderValue {
+            firstLine = "あたり!"
+        } else {
+            firstLine = "はずれ！"
         }
         
-        if num == sliderValue {
-            let alert2 =
-                UIAlertController(title: "結果",
-                                  message: """
-              あたり！
-              あなたの値: \(sliderValue)
-            """,preferredStyle: .alert)
-            let defaultAction2: UIAlertAction = UIAlertAction(title: "再挑戦", style: .default, handler:{
-                // ボタンが押された時の処理を書く（クロージャ実装）
-                (action: UIAlertAction!) -> Void in
-                self.random()
-            })
-            alert2.addAction(defaultAction2)
-            present(alert2, animated: true, completion: nil)
-        }
+        let alert = UIAlertController (
+            title: "結果",
+            message: "\(firstLine)\nあなたの値: \(sliderValue)",
+            preferredStyle: .alert
+        )
+        
+        let retryAction = UIAlertAction(
+            title: "再挑戦",
+            style: .default,
+        handler: { [weak self] _ in
+            self?.random()
+            }
+        )
+        alert.addAction(retryAction)
+        present(alert, animated: true, completion: nil)
     }
 }

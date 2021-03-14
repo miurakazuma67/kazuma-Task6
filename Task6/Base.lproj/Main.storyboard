@@ -85,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="FTz-On-dgC" id="sa6-fl-6wZ"/>
+                        <outlet property="slider" destination="YEF-Hw-PhE" id="EmJ-V7-tt0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
